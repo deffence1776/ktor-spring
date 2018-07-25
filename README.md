@@ -1,12 +1,15 @@
 # ktor-spring sample
 ktor spring integration sample.still experimental.
 
-ktor http://ktor.io/
+[ktor](http://ktor.io/)
 
-ktor Guice sample [http://ktor.io/samples/guice.html]
+[ktor Guice sample](http://ktor.io/samples/guice.html)
 
-Spring Framework [https://docs.spring.io/spring/docs/5.0.7.RELEASE/spring-framework-reference/index.html]
+[Spring Framework](https://docs.spring.io/spring/docs/5.0.7.RELEASE/spring-framework-reference/index.html)
 
+[MyBatis3](http://www.mybatis.org/mybatis-3/)
+
+[MyBatis-Spring](http://www.mybatis.org/spring/)
 
 ## Spring Integration
 
