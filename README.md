@@ -47,6 +47,7 @@ fun Routing.sampleRoute() {
 
         call.respondText(result.toString(), ContentType.Text.Plain)
     }
+    
 }
 
 ```
@@ -56,19 +57,14 @@ transaction management
 ```kotlin
 fun Routing.sampleRoute() {
 
-    get("/type") {
-        val result = call.inTransaction(SampleService::class.java) { service ->
+    get("/view") {
+        val service = call.bean(SampleService::class.java) //getBean
+        val result = call.inTransaction({ 
              service.exec()
         }
         call.respondText(result.toString(), ContentType.Text.Plain)
     }
-    
-    get("/name") {
-        val result = call.inTransaction("sampleService", SampleService::class.java) { service ->
-            service.exec2()
-        }
-        call.respondText(result.toString(), ContentType.Text.Plain)
-    }
+
     
     get("/insert") {
 
