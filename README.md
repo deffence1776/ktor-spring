@@ -13,7 +13,7 @@ ktor spring integration sample.still experimental.
 
 ## Spring Integration
 
-setupSpringApplicationContextInfrastructure　function
+create Server with Spring ApplicationContext.
 
 ```kotlin
 fun main(args: Array<String>) {
@@ -38,7 +38,7 @@ fun main(args: Array<String>) {
 
 ### Request Handler
 
-bean function
+use applicationContext 
 
 ```kotlin
 fun Routing.sampleRoute() {
@@ -46,6 +46,7 @@ fun Routing.sampleRoute() {
     get("/") {
 
         val service = call.bean(SampleService::class.java) //getBean
+        //val service =  call.applicationContext.getBean(SampleService::class.java)
         val result = service.exec()
 
         call.respondText(result.toString(), ContentType.Text.Plain)
@@ -55,7 +56,7 @@ fun Routing.sampleRoute() {
 
 ```
 
-transaction management
+transaction management.
 
 ```kotlin
 fun Routing.sampleRoute() {
