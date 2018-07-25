@@ -40,18 +40,18 @@ fun Routing.sampleRoute() {
     }
 
     //insert By query String
-    get("/insert"){
+    get("/insert") {
 
-        val paramId= call.parameters["id"]
-        val id=if(null != paramId) paramId else ""
+        val paramId = call.parameters["id"]
+        val id = if (null != paramId) paramId else ""
 
-        val paramName= call.parameters["name"]
-        val name=if(null != paramName) paramName else ""
+        val paramName = call.parameters["name"]
+        val name = if (null != paramName) paramName else ""
 
-        val todo= Todo(id.toInt(),name)
+        val todo = Todo(id.toInt(), name)
 
-        call.inTransaction (SampleService::class.java){
-            it.insert(todo)
+        call.inTransaction(SampleService::class.java) { service ->
+            service.insert(todo)
         }
 
         call.respondText(todo.toString(), ContentType.Text.Plain)

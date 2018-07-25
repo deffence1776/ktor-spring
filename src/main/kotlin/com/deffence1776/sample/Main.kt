@@ -15,9 +15,7 @@ fun main(args: Array<String>) {
     val applicationContext = createApplicationContext(ApplicationConfig::class.java)
 
     val server = embeddedServer(Netty,
-            port = 3333,
-            module = {
-
+            port = 3333) {
                 install(CallLogging)
 
                 setupSpringApplicationContextInfrastructure(applicationContext)
@@ -27,7 +25,7 @@ fun main(args: Array<String>) {
 
                 }
             }
-    )
+
     server.start(wait = true)
 }
 
