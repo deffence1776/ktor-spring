@@ -17,15 +17,15 @@ create Server with Spring ApplicationContext.
 
 ```kotlin
 fun main(args: Array<String>) {
-
-    val applicationContext = createApplicationContext(ApplicationConfig::class.java)
-
+    
     val server = embeddedServer(Netty,
             port = 3333) {
                 install(CallLogging)
 
-                setupSpringApplicationContextInfrastructure(applicationContext)
-
+                install(SpringIntegration){
+                    ctx.register(ApplicationConfig::class.java)
+                    ctx.refresh()
+                }
                 routing {
                     sampleRoute()
 
