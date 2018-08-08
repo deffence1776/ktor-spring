@@ -32,7 +32,6 @@ class SpringIntegration{
             return feature
         }
     }
-
 }
 
 //getter

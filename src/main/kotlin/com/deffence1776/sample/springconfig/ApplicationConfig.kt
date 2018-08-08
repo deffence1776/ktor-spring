@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Configuration
 import javax.sql.DataSource
 import com.zaxxer.hikari.HikariDataSource
 import com.zaxxer.hikari.HikariConfig
+import org.apache.ibatis.session.SqlSessionFactory
 import org.mybatis.spring.SqlSessionFactoryBean
 import org.mybatis.spring.annotation.MapperScan
 import org.springframework.context.annotation.Bean
@@ -36,10 +37,10 @@ open class ApplicationConfig {
      * Mybatis SessionFactory
      */
     @Bean
-    open fun sqlSessionFactoryBean(dataSource: DataSource): SqlSessionFactoryBean {
+    open fun sqlSessionFactory(dataSource: DataSource): SqlSessionFactory {
         val bean = SqlSessionFactoryBean()
         bean.setDataSource(dataSource)
-        return bean
+        return bean.`object`
     }
 
     @Bean
